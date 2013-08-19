@@ -27,7 +27,8 @@ module.exports = function (app, config, passport) {
 
   // set views path, template engine and default layout
   app.set('views', config.root + '/app/views')
-  app.set('view engine', 'jade')
+  app.engine('html', require('hogan-express'));
+  app.set('view engine', 'html');
   
   // enable jsonp
   app.enable("jsonp callback")
