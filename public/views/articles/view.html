@@ -2,6 +2,5 @@
 	<span>{{article.created | date:'medium'}}</span> /
 	<span>{{article.user.name}}</span>
 	<h2>{{article.title}} <a data-ng-show="global.user._id == article.user._id" href="/#!/articles/{{article._id}}/edit">edit</a></h2>
-	<div ng-click="flip();" class="flashcard side1">{{article.side1}}</div>
-	<div ng-click="flip();" class="flashcard side2 hidden">{{article.side2}}</div>
+	<div>{{article.content}}</div>
 </section>
