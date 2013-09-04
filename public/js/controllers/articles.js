@@ -2,13 +2,14 @@ function ArticlesController($scope, $routeParams, $location, Global, Articles) {
 	$scope.global = Global;
 
 	$scope.create = function () {
-		var article = new Articles({ title: this.title, content: this.content });
+		var article = new Articles({ title: this.title, side1: this.side1, side2:  this.side2 });
 		article.$save(function (response) {
 			$location.path("articles/" + response._id);
 		});
 
 		this.title = "";
-		this.content = "";
+		this.side1 = "";
+		this.side2 = "";
 	};
 
 	$scope.remove = function (article) {
@@ -43,5 +44,19 @@ function ArticlesController($scope, $routeParams, $location, Global, Articles) {
 		Articles.get({ articleId: $routeParams.articleId }, function (article) {
 			$scope.article = article;
 		});
+	};
+ 
+	$scope.flip = function () {
+		console.log($scope.article);
+		var side1 = $('.side1'),
+			side2 = $('.side2');
+
+		if ($(side1).hasClass('hidden')) {
+			side2.addClass('hidden');
+			side1.removeClass('hidden');
+		} else {
+			side1.addClass('hidden');
+			side2.removeClass('hidden');
+		}
 	};
 }
